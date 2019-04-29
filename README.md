@@ -58,12 +58,13 @@ Flowfib does not require any special mutex's, signalling, semaphones,
 threading etc. to safely coordinate processing, just Go's builtin
 channels and goroutines.
 
-Timing
-------
+Timing Notes
+------------
 
 Flowfib computes the more than 200,000 digits of fib(1000000) in less
 than 7.2 seconds on a laptop running Ubuntu-18.04.2, consuming about 14
-seconds total cpu time on eight CPUs.
+seconds total cpu time on eight CPUs. (NOTE: tested on Linux 64bit
+only.)
 
 fib(3000000) nearly maxes out16GB memory, running for about 48 seconds.
 
@@ -71,7 +72,9 @@ fib(4000000) thrashes mightily, swapping out more than half of memory,
 finally struggling through to a finish after 3 minutes and eleven
 seconds. The lower order digits are 7091204718905974245428xxxxxx5. x's
 mark some digits redacted to intrigue the reader. (Note that fib(10\^N)
-always ends in five.)
+always ends in five.) fib(300000) ran in less than 21 seconds on a
+Raspberry Pi(very nice cross compilation) ( 1.3 seconds on the eight
+core laptop). fib(400000) never finished on the Pi.
 
 Example
 -------
